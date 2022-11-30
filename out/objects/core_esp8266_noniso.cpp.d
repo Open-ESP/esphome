@@ -1,0 +1,24 @@
+out/objects/core_esp8266_noniso.cpp.o: \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/core_esp8266_noniso.cpp \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/stdlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/ieeefp.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/newlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/config.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/features.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/xtensa/config/core-isa.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/reent.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/_default_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/lock.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/cdefs.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/stdlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/alloca.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/string.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/string.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/stdint.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/_intsup.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/math.h \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/stdlib_noniso.h

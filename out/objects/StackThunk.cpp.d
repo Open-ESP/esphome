@@ -1,0 +1,35 @@
+out/objects/StackThunk.cpp.o: \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/StackThunk.cpp \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/stdint.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/_default_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/features.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/_intsup.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/stdlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/ieeefp.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/newlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/config.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/xtensa/config/core-isa.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/reent.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/_ansi.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/_types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/lock.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/cdefs.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/stdlib.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/alloca.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/stdio.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/machine/types.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/stdio.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/pgmspace.h \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/pgmspace.h \
+ ../esp8266-arduino/tools/sdk/include/ets_sys.h \
+ ../esp8266-arduino/tools/sdk/include/c_types.h \
+ ../esp8266-arduino/tools/sdk/include/eagle_soc.h \
+ ../esp8266-arduino/tools/sdk/include/osapi.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/string.h \
+ ../esp8266-arduino/tools/sdk/libc/xtensa-lx106-elf/include/sys/string.h \
+ ../esp8266-arduino/cores/esp8266/user_config.h \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/debug.h \
+ /home/zexceed12300/Github/esp8266-arduino/cores/esp8266/StackThunk.h
