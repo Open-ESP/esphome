@@ -157,11 +157,11 @@ sync_intent = [
         "willReportState": True,
         "attributes": {
           "availableThermostatModes": [
-            "on"
+            "cool"
           ],
           "thermostatTemperatureRange": {
-            "minThresholdCelsius": -100,
-            "maxThresholdCelsius": 260
+            "minThresholdCelsius": 15,
+            "maxThresholdCelsius": 60
           },
           "thermostatTemperatureUnit": "C",
           "queryOnlyTemperatureSetting": True
