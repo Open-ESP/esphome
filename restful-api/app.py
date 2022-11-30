@@ -157,15 +157,11 @@ sync_intent = [
         "willReportState": True,
         "attributes": {
           "availableThermostatModes": [
-            "off",
-            "heat",
-            "cool",
-            "heatcool",
             "on"
           ],
           "thermostatTemperatureRange": {
-            "minThresholdCelsius": 0,
-            "maxThresholdCelsius": 100
+            "minThresholdCelsius": -100,
+            "maxThresholdCelsius": 260
           },
           "thermostatTemperatureUnit": "C",
           "queryOnlyTemperatureSetting": True
@@ -208,10 +204,9 @@ query_intent = {
     "6": {
         "status": "SUCCESS",
         "online": True,
-        "thermostatMode": "cool",
-        "thermostatTemperatureSetpoint": 23,
-        "thermostatTemperatureAmbient": 25.1,
-        "thermostatHumidityAmbient": 45.3
+        "thermostatMode": "on",
+        "thermostatTemperatureSetpoint": 25,
+        "thermostatTemperatureAmbient": 25,
     }
 }
 
@@ -329,7 +324,21 @@ def fulfillment():
 
 @app.route('/api/get_state', methods=['GET'])
 def get_state():
+    
     return query_intent
+
+
+@app.route('/api/set_state', methods=['POST'])
+def commands():
+    
+    req = request.get_json()
+    
+    for device in req:
+        if device == "6":
+            query_intent[device]["thermostatTemperatureSetpoint"] = req[device]["thermostatTemperatureSetpoint"]
+            query_intent[device]["thermostatTemperatureAmbient"] = req[device]["thermostatTemperatureAmbient"]
+    
+    return jsonify({"status":"SUCCESS"})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8443, ssl_context=('cert.pem', 'key.pem'))
