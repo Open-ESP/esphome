@@ -157,7 +157,17 @@ sync_intent = [
         "willReportState": True,
         "attributes": {
           "availableThermostatModes": [
-            "cool"
+            "none"
+            "off",
+            "heat",
+            "cool",
+            "on"
+            "heatcool",
+            "auto",
+            "fan-only",
+            "purifier",
+            "eco",
+            "dry"
           ],
           "thermostatTemperatureRange": {
             "minThresholdCelsius": 15,
