@@ -4,8 +4,8 @@
 #include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
 
-#define STA_WIFI_SSID               "ESPHOME"
-#define STA_WIFI_PASS               "12345678"
+#define STA_WIFI_SSID               "Free wifi sedang ultah wokwkwk"
+#define STA_WIFI_PASS               ""
 
 const char* r4venz_host =           "esp.r4venz.me";
 const uint16_t r4venz_port =        8443;
@@ -15,11 +15,9 @@ HTTPClient https;
 
 void set_gpio_state(uint8_t pin, int state) {
     if (state == 0) {
-        Serial.println(state);
         digitalWrite(pin, HIGH);
     } 
     else if (state == 1) {
-        Serial.println(state);
         digitalWrite(pin, LOW);
     }
 }
@@ -27,9 +25,12 @@ void set_gpio_state(uint8_t pin, int state) {
 void handleAPI() {
     if (WiFi.status() == WL_CONNECTED) {
 
-        if (!client.connect(r4venz_host, r4venz_port)) {
+        client.setInsecure();
 
-            Serial.println("Connected To GoogleHome");
+        if (client.connect(r4venz_host, r4venz_port)) {
+
+            set_gpio_state(2, 1);
+            Serial.println("Sending requests to server..");
 
             https.begin(client, "http://esp.r4venz.me:8443/api/get_state");
             if (https.GET() > 0) {
@@ -37,8 +38,6 @@ void handleAPI() {
             
                 DynamicJsonDocument json(1024);
                 deserializeJson(json, deviceState);
-
-                Serial.println(deviceState);
 
                 set_gpio_state(4, json["1"]["on"]);
                 set_gpio_state(5, json["2"]["on"]);
@@ -48,14 +47,14 @@ void handleAPI() {
             }
             https.end();
             
-            https.begin(client, "http://esp.r4venz.me:8443/api/set_state");
+            https.begin(client, "https://esp.r4venz.me:8443/api/set_state");
             https.addHeader("Content-Type", "application/json");
-            https.POST("{\"6\":{\"online\":true,\"status\":\"SUCCESS\",\"thermostatMode\":\"cool\",\"thermostatTemperatureAmbient\":" + String(30) + ",\"thermostatTemperatureSetpoint\":" + String(30) + "}}");
-
+            https.POST("{\"6\":{\"online\":true,\"status\":\"SUCCESS\",\"thermostatTemperatureAmbient\":" + String(30) + ",\"thermostatTemperatureSetpoint\":" + String(30) + "}}");
             https.end();
         } else {
-            Serial.println("Connecting To GoogleHome Failed!");
+            Serial.println("Failed to sent requests, server disconnected!");
         }
+        set_gpio_state(2, 0);
     }
 }
 
@@ -75,8 +74,6 @@ void setup() {
         delay(500);
     }
     Serial.println();
-
-    client.setInsecure();
 
     pinMode(2, OUTPUT);
     pinMode(4, OUTPUT);

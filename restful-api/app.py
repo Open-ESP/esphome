@@ -24,9 +24,9 @@ sync_intent = [
         "defaultNames": [
             "Plug Socket"
         ],
-        "name": "Smart Switch",
+        "name": "Smart Switch 1",
         "nicknames": [
-            "New Switch"
+            "Switch 1"
         ]
         },
         "deviceInfo": {
@@ -50,9 +50,9 @@ sync_intent = [
         "defaultNames": [
             "Plug Socket"
         ],
-        "name": "Smart Switch",
+        "name": "Smart Switch 2",
         "nicknames": [
-            "New Switch"
+            "Switch 2"
         ]
         },
         "deviceInfo": {
@@ -76,9 +76,9 @@ sync_intent = [
         "defaultNames": [
             "Plug Socket"
         ],
-        "name": "Smart Switch",
+        "name": "Smart Switch 3",
         "nicknames": [
-            "New Switch"
+            "Switch 3"
         ]
         },
         "deviceInfo": {
@@ -102,9 +102,9 @@ sync_intent = [
         "defaultNames": [
             "Plug Socket"
         ],
-        "name": "Smart Switch",
+        "name": "Smart Switch 4",
         "nicknames": [
-            "New Switch"
+            "Switch 4"
         ]
         },
         "deviceInfo": {
@@ -128,9 +128,9 @@ sync_intent = [
         "defaultNames": [
             "Plug Socket"
         ],
-        "name": "Smart Switch",
+        "name": "Smart Switch 5",
         "nicknames": [
-            "New Switch"
+            "Switch 5"
         ]
         },
         "deviceInfo": {
@@ -152,7 +152,7 @@ sync_intent = [
           "action.devices.traits.TemperatureSetting"
         ],
         "name": {
-          "name": "Simple thermostat"
+          "name": "Thermostat 1"
         },
         "willReportState": True,
         "attributes": {
@@ -170,8 +170,8 @@ sync_intent = [
             "dry"
           ],
           "thermostatTemperatureRange": {
-            "minThresholdCelsius": 15,
-            "maxThresholdCelsius": 60
+            "minThresholdCelsius": -100,
+            "maxThresholdCelsius": 266
           },
           "thermostatTemperatureUnit": "C",
           "queryOnlyTemperatureSetting": True
@@ -345,8 +345,13 @@ def commands():
     
     for device in req:
         if device == "6":
+            ambientTemperature = req[device]["thermostatTemperatureAmbient"]
+            if ambientTemperature > 29:
+                query_intent[device]["thermostatMode"] == "heat"
+            elif ambientTemperature < 30:
+                query_intent[device]["thermostatMode"] == "cool"
             query_intent[device]["thermostatTemperatureSetpoint"] = req[device]["thermostatTemperatureSetpoint"]
-            query_intent[device]["thermostatTemperatureAmbient"] = req[device]["thermostatTemperatureAmbient"]
+            query_intent[device]["thermostatTemperatureAmbient"] = ambientTemperature
     
     return jsonify({"status":"SUCCESS"})
 
