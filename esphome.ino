@@ -3,6 +3,12 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClientSecure.h>
 #include <ArduinoJson.h>
+#define MEASUREMENT_INTERVAL 1000
+
+int16_t measurement[5] = { -1, -1, -1, -1, -1};
+unsigned long oldTime = 30000;
+
+String suhuValue;
 
 #define STA_WIFI_SSID               "Free wifi sedang ultah wokwkwk"
 #define STA_WIFI_PASS               ""
@@ -49,13 +55,18 @@ void handleAPI() {
             
             https.begin(client, "https://esp.r4venz.me:8443/api/set_state");
             https.addHeader("Content-Type", "application/json");
-            https.POST("{\"6\":{\"online\":true,\"status\":\"SUCCESS\",\"thermostatTemperatureAmbient\":" + String(30) + ",\"thermostatTemperatureSetpoint\":" + String(30) + "}}");
+            https.POST("{\"6\":{\"online\":true,\"status\":\"SUCCESS\",\"thermostatTemperatureAmbient\":" + suhuValue + ",\"thermostatTemperatureSetpoint\":" + suhuValue + "}}");
             https.end();
         } else {
             Serial.println("Failed to sent requests, server disconnected!");
         }
         set_gpio_state(2, 0);
     }
+}
+
+void temp_detect(int16_t *temperature) {
+  String temperatureStr = String(temperature[0]);
+  suhuValue = temperatureStr;
 }
 
 void setup() {
@@ -85,4 +96,20 @@ void setup() {
 
 void loop() {
     handleAPI();
+    if (millis() - oldTime >= MEASUREMENT_INTERVAL) {
+    float milliVoltage = analogRead(A0) * 3300.0 / 1023.0;
+    float temperature = (milliVoltage - 500) / 10;
+
+    if (temperature - (int)temperature > 0.5)
+      temperature = (int)temperature + 1;
+    else
+      temperature = (int)temperature;
+
+    for (byte i = 4; i > 0; i--)
+      measurement[i] = measurement[i - 1];
+    measurement[0] = (int)temperature;
+
+    temp_detect(measurement);
+    oldTime = millis();
+  }
 }
